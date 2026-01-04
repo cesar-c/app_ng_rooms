@@ -1,0 +1,49 @@
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant invalid (&:where(.ng-invalid.ng-touched));
+
+@theme {
+  /* COLORS */
+
+  /* Brand */
+  --color-brand: #e90364;
+
+  /* Primary */
+  --color-primary-100: #ffe7fd;
+  --color-primary-200: #ffcefd;
+  --color-primary-300: #ffa7f8;
+  --color-primary-400: #ff73f2;
+  --color-primary-500: #f637e3;
+  --color-primary-600: #db1ec5;
+  --color-primary-700: #b5169e;
+  --color-primary-800: #941481;
+  --color-primary-900: #791667;
+  --color-primary-950: #510143;
+
+  /* Neutral */
+  --color-neutral-100: #e7e7e7;
+  --color-neutral-200: #d1d1d1;
+  --color-neutral-300: #b0b0b0;
+  --color-neutral-400: #888888;
+  --color-neutral-500: #6d6d6d;
+  --color-neutral-600: #5d5d5d;
+  --color-neutral-700: #4f4f4f;
+  --color-neutral-800: #454545;
+  --color-neutral-900: #3d3d3d;
+  --color-neutral-950: #252525;
+
+  /* Danger */
+  --color-danger-400: #ff5c37;
+  --color-danger-500: #ff3e1d;
+  --color-danger-600: #f01806;
+  --color-danger-700: #c70c07;
+  --color-danger-800: #9e0e10;
+
+  /* Error */
+  --color-error: #dc2626;
+
+  /* Success */
+  --color-success: #14ffec;
+
+  /* Warning */
+  --color-warning: #ffb22c;
+}

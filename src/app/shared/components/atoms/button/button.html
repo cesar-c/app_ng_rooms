@@ -1,0 +1,8 @@
+<button
+  type="button"
+  class="text-center border transition-colors font-semibold rounded cursor-pointer"
+  [ngClass]="classes()"
+  (click)="clicked.emit()"
+>
+  <ng-content />
+</button>
