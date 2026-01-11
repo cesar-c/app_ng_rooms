@@ -10,7 +10,7 @@ import { NgClass } from '@angular/common';
 export class NgRoomButton {
   @Input() disabled = false;
   @Input() customClasses = '';
-  @Input() variant: 'primary' | 'secondary' | 'danger' | 'text' = 'primary';
+  @Input() variant: 'primary' | 'secondary' | 'danger' | 'base' = 'primary';
   @Output() clicked = new EventEmitter<void>();
 
   classes = computed(() => ['btn', `btn-${this.variant}`, this.customClasses]);

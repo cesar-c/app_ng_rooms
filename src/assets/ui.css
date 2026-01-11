@@ -9,32 +9,36 @@
   .btn {
     @apply inline-flex items-center justify-center
            px-3 py-2 rounded font-semibold
+           w-full
            transition-colors
-           border border-transparent;
+           border;
   }
 
   .btn-primary {
-    @apply bg-primary-500 text-neutral-100
+    @apply border-transparent bg-primary-500 text-neutral-100
            hover:bg-primary-600
-           dark:bg-primary-700;
+           dark:hover:bg-primary-500
+           dark:bg-primary-600;
   }
 
   .btn-secondary {
-    @apply bg-neutral-300 text-neutral-950
-           hover:bg-neutral-400
-           dark:bg-neutral-600
+    @apply bg-neutral-50 text-neutral-950
+           border-neutral-200
+           hover:bg-neutral-100
+           hover:dark:bg-neutral-700
+           dark:bg-neutral-800
+           dark:border-neutral-600
            dark:text-neutral-100;
   }
 
   .btn-danger {
-    @apply bg-danger-500 text-neutral-100
+    @apply border-transparent bg-danger-500 text-neutral-100
            hover:bg-danger-600
            dark:bg-danger-700;
   }
 
-  .btn-text {
-    @apply bg-transparent 
-           hover:underline;
+  .btn-base {
+    @apply bg-transparent border-transparent;
   }
 
   .btn:disabled {

@@ -20,16 +20,17 @@
   --color-primary-950: #510143;
 
   /* Neutral */
-  --color-neutral-100: #e7e7e7;
-  --color-neutral-200: #d1d1d1;
-  --color-neutral-300: #b0b0b0;
-  --color-neutral-400: #888888;
-  --color-neutral-500: #6d6d6d;
-  --color-neutral-600: #5d5d5d;
-  --color-neutral-700: #4f4f4f;
-  --color-neutral-800: #454545;
-  --color-neutral-900: #3d3d3d;
-  --color-neutral-950: #252525;
+  --color-neutral-050: #f2f2f2;
+  --color-neutral-100: #e6e6e6;
+  --color-neutral-200: #cccccc;
+  --color-neutral-300: #b3b3b3;
+  --color-neutral-400: #999999;
+  --color-neutral-500: #808080;
+  --color-neutral-600: #666666;
+  --color-neutral-700: #4d4d4d;
+  --color-neutral-800: #333333;
+  --color-neutral-900: #1a1a1a;
+  --color-neutral-950: #121212;
 
   /* Danger */
   --color-danger-400: #ff5c37;
