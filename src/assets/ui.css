@@ -44,4 +44,23 @@
   .btn:disabled {
     @apply opacity-50 cursor-not-allowed;
   }
+
+  /*
+      Badge styles
+  */
+  .badge {
+    @apply inline-flex items-center rounded-md
+         bg-primary-400/10 px-2 py-1 text-xs font-medium
+         text-neutral-400 inset-ring inset-ring-gray-400/20;
+  }
+
+  /*  
+      UserStatus styles
+  */
+  .user-status {
+    @apply inline-flex items-center rounded-full
+           px-2.5 py-0.5 text-xs font-medium
+           text-neutral-100 bg-primary-600/20
+           dark:bg-primary-500/20;
+  }
 }

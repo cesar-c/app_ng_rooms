@@ -1,22 +1,24 @@
-<article
-  class="flex flex-col justify-center max-w-2xl gap-4 min-h-96 md:flex-row p-4 rounded-lg shadow-lg border-x-2 border-brand bg-neutral-50 dark:bg-neutral-900"
->
-  <section class="w-1/2 md:block hidden">
-    <img src="/images/login-thumb.webp" alt="login thumb" />
-  </section>
-  <section class="flex flex-col gap-4 md:w-1/2 justify-center items-stretch text-center">
-    <h1
-      class="text-3xl font-bold text-center bg-clip-text text-transparent bg-linear-to-r from-primary-700 via-primary-600 to-brand"
-    >
-      Ng Rooms
-    </h1>
-    <p class="font-semibold">Chat en tiempo real para equipos y amigos.</p>
-    <p class="font-semibold">
-      Por favor, autentique su identidad utilizando su cuenta de Google para continuar
-    </p>
-    <ngroom-button [variant]="'secondary'">
-      <img src="/images/google-color.webp" alt="Google icon" class="w-5 h-5 mr-2" /> Ingresa con
-      Google
-    </ngroom-button>
-  </section>
-</article>
+<main class="flex h-screen w-screen justify-center items-center">
+  <article
+    class="flex flex-col justify-center max-w-2xl gap-4 min-h-96 md:flex-row p-4 rounded-lg shadow-lg border-x-2 border-brand bg-neutral-50 dark:bg-neutral-900"
+  >
+    <section class="w-1/2 md:block hidden">
+      <img src="/images/login-thumb.webp" alt="login thumb" />
+    </section>
+    <section class="flex flex-col gap-4 md:w-1/2 justify-center items-stretch text-center">
+      <h1
+        class="text-3xl font-bold text-center bg-clip-text text-transparent bg-linear-to-r from-primary-700 via-primary-600 to-brand"
+      >
+        Ng Rooms
+      </h1>
+      <p class="font-semibold">Chat en tiempo real para equipos y amigos.</p>
+      <p class="font-semibold">
+        Por favor, autentique su identidad utilizando su cuenta de Google para continuar
+      </p>
+      <ngroom-button [variant]="'secondary'">
+        <img src="/images/google-color.webp" alt="Google icon" class="w-5 h-5 mr-2" /> Ingresa con
+        Google
+      </ngroom-button>
+    </section>
+  </article>
+</main>
