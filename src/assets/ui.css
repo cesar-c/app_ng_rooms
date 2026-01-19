@@ -63,4 +63,20 @@
            text-neutral-100 bg-primary-600/20
            dark:bg-primary-500/20;
   }
+
+  /*
+      =========================
+              COMPONENTS
+      =========================
+  */
+
+  .bg-surface {
+    @apply bg-neutral-50 dark:bg-neutral-900;
+  }
+
+  .custom-scrollbar {
+    @apply scrollbar-thin scrollbar-thumb-neutral-100;
+    @apply scrollbar-track-neutral-50 overflow-y-auto;
+    @apply dark:scrollbar-thumb-neutral-800 dark:scrollbar-track-neutral-900;
+  }
 }
