@@ -1,0 +1,26 @@
+<aside class="absolute -left-58 w-58 flex flex-none flex-col h-full sm:static sm:left-0 bg-surface">
+  <h1
+    class="flex flex-1 text-2xl font-bold px-4 items-center justify-center bg-clip-text text-transparent bg-linear-to-r from-primary-700 via-primary-600 to-brand"
+  >
+    Ng Rooms
+  </h1>
+  <section class="flex-7 px-1 custom-scrollbar">
+    @for (item of items(); track item.id) {
+      <a class="btn btn-base hover:bg-neutral-100 dark:hover:bg-neutral-800">
+        <div class="flex-1">
+          {{ item.name }}
+        </div>
+        <button>*</button>
+      </a>
+    }
+  </section>
+  <section class="flex flex-col gap-3 flex-1 px-4 py-2">
+    <h3 class="text-lg font-semibold truncate">Pedro Buenaventura Castillo</h3>
+    <div class="flex items-center justify-between ">
+      <span class="user-status">Online</span>
+      <ngroom-button variant="base" customClasses="text-danger-500 p-1.5">
+        <lucide-angular [img]="logOutIcon" />
+      </ngroom-button>
+    </div>
+  </section>
+</aside>

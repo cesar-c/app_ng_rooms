@@ -2,66 +2,9 @@
   class="flex h-screen w-screen lg:container bg-neutral-100 dark:bg-neutral-800 gap-[0.06rem] mx-auto rounded-lg overflow-hidden"
 >
   <!-- Sidebar -->
-  <aside class="absolute -left-58 w-58 flex flex-none flex-col sm:static sm:left-0 bg-surface">
-    <h1
-      class="flex flex-1 text-2xl font-bold px-4 items-center justify-center bg-clip-text text-transparent bg-linear-to-r from-primary-700 via-primary-600 to-brand"
-    >
-      Ng Rooms
-    </h1>
-    <section class="flex-8 px-1 custom-scrollbar">
-      Rooms List
-      @for (item of items(); track item.id) {
-        <a class="btn btn-base hover:bg-neutral-100 dark:hover:bg-neutral-800">
-          <div class="flex-1">
-            {{ item.name }}
-          </div>
-          <button>*</button>
-        </a>
-      }
-    </section>
-    <section class="flex-1 px-4">User</section>
-  </aside>
+  <ngroom-sidebar/>
   <!-- End Sidebar -->
-  <!-- Room Section -->
-  <section class="flex gap-2 flex-col flex-1 py-2 border-b-2 border-brand bg-surface">
-    <section class="flex justify-stretch items-center mx-4 border-b border-neutral-800 py-2">
-      <ngroom-button variant="base" customClasses="hover:bg-neutral-800 md:hidden">
-        <lucide-angular [img]="menuIcon" />
-      </ngroom-button>
-      <h2 class="flex-1 text-2xl">Room 1</h2>
-    </section>
-
-    <!-- Messages section -->
-    <section class="flex flex-1 flex-col gap-2 custom-scrollbar px-4">
-      @for (message of messages; track message.id) {
-        <article
-          [ngClass]="{
-            'rounded-l-2xl bg-primary-700 self-end': message.isOwn,
-            'rounded-r-2xl bg-neutral-800 self-start': !message.isOwn,
-          }"
-          class="rounded-b-2xl p-2 max-w-2/3"
-        >
-          @if (!message.isOwn) {
-            <h3 class="font-bold">{{ message.user }}</h3>
-          }
-          <span>{{ message.text }}</span>
-        </article>
-      }
-    </section>
-    <!-- End Messages section -->
-
-    <!-- Message input section -->
-    <div class="flex px-4 justify-center">
-      <section
-        class="flex self-center w-full max-w-160 gap-2 p-1.5 bg-neutral-100 dark:bg-neutral-800 rounded-2xl"
-      >
-        <ngroom-button variant="base" customClasses="hover:bg-neutral-700 p-1.5 rounded-2xl">
-          <lucide-angular [img]="smilePlusIcon" />
-        </ngroom-button>
-        <input class="flex-1 focus:outline-none" type="text" placeholder="Escribe un mensaje" />
-      </section>
-    </div>
-    <!-- End Message Input section -->
-  </section>
-  <!-- End Room Section -->
+  <!-- Chat Panel -->
+  <ngroom-chat-panel/>
+  <!-- End Chat Panel -->
 </main>
