@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LucideAngularModule, MessageCircleMore } from 'lucide-angular';
-import { NgRoomButton } from '../../shared/components/atoms/button/button';
+import { NgRoomButton } from '@components/atoms/button/button';
+import { AuthService } from '@core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngroom-login',
@@ -9,5 +11,7 @@ import { NgRoomButton } from '../../shared/components/atoms/button/button';
   styleUrl: './login.css',
 })
 export default class Login {
+  readonly authService = inject(AuthService);
+  readonly router = inject(Router);
   readonly messageCircleMore = MessageCircleMore;
 }

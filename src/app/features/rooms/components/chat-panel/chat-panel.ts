@@ -10,10 +10,8 @@ import { LucideAngularModule, Menu, SmilePlus } from 'lucide-angular';
   styleUrl: './chat-panel.css',
 })
 export class ChatPanel {
-
   menuIcon = Menu;
   smilePlusIcon = SmilePlus;
-  
   messages = [
     { id: 1, user: 'Alice', text: 'Hello everyone', isOwn: false },
     { id: 2, user: 'Bob', text: 'Hi Alice!', isOwn: false },

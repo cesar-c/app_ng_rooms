@@ -16,9 +16,13 @@
   </section>
   <section class="flex flex-col gap-3 flex-1 px-4 py-2">
     <h3 class="text-lg font-semibold truncate">Pedro Buenaventura Castillo</h3>
-    <div class="flex items-center justify-between ">
+    <div class="flex items-center justify-between">
       <span class="user-status">Online</span>
-      <ngroom-button variant="base" customClasses="text-danger-500 p-1.5">
+      <ngroom-button
+        (click)="authService.signOut()"
+        variant="base"
+        customClasses="text-danger-500 p-1.5"
+      >
         <lucide-angular [img]="logOutIcon" />
       </ngroom-button>
     </div>
