@@ -21,10 +21,4 @@ export class Sidebar {
   items = computed(() =>
     Array.from({ length: this.totalItems }, (_, i) => ({ id: i + 1, name: `Room ${i + 1}` })),
   );
-
-  signOut() {
-    this.authService.signOut().subscribe(() => {
-      this.router.navigate(['/login']);
-    });
-  }
 }
