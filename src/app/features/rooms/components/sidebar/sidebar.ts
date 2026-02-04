@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
-  readonly authService = inject(AuthService);
-  readonly router = inject(Router);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
   readonly user = signal(this.authService.getCurrentUser());
   logOutIcon = LogOut;
   totalItems = 16;
@@ -21,4 +21,10 @@ export class Sidebar {
   items = computed(() =>
     Array.from({ length: this.totalItems }, (_, i) => ({ id: i + 1, name: `Room ${i + 1}` })),
   );
+
+  signOut() {
+    this.authService.signOut().subscribe(() => {
+      this.router.navigate(['/login']);
+    });
+  }
 }

@@ -11,7 +11,13 @@ import { Router } from '@angular/router';
   styleUrl: './login.css',
 })
 export default class Login {
-  readonly authService = inject(AuthService);
-  readonly router = inject(Router);
+  private authService = inject(AuthService);
+  private router = inject(Router);
   readonly messageCircleMore = MessageCircleMore;
+
+  signIn() {
+    this.authService.signInWithGoogle().subscribe((user) => {
+      if (user) this.router.navigate(['/room']);
+    });
+  }
 }
