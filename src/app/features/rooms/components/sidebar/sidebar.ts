@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, LogOut } from 'lucide-angular';
+import { LucideAngularModule, LogOut, MessagesSquare } from 'lucide-angular';
 import { NgRoomButton } from '@components/atoms/button/button';
 import { AuthService } from '@core/services/auth.service';
 import { Router } from '@angular/router';
@@ -15,7 +15,11 @@ export class Sidebar {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
   readonly user = signal(this.authService.getCurrentUser());
+
+  /* ICONS  */
   logOutIcon = LogOut;
+  messagesSquareIcon = MessagesSquare;
+
   totalItems = 16;
 
   items = computed(() =>

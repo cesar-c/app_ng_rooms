@@ -10,6 +10,7 @@
     @apply inline-flex items-center justify-center
            px-3 py-2 rounded-lg font-semibold
            w-full
+           cursor-pointer
            transition-colors
            border;
   }
@@ -29,6 +30,10 @@
            dark:bg-neutral-800
            dark:border-neutral-600
            dark:text-neutral-100;
+  }
+
+  .btn-tonal {
+    @apply border-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800;
   }
 
   .btn-danger {
