@@ -21,8 +21,6 @@ export class UsersService {
     const userDataFormated: Partial<UserProfile> = {
       email: userData.email || '',
       name: userData.displayName || 'Anonymous',
-      photoURL: userData.photoURL || '',
-      lastLogin: new Date(),
     };
 
     return this.getUserProfile(userData.uid).pipe(
@@ -44,9 +42,7 @@ export class UsersService {
       uid,
       email: docData['email'] || '',
       name: docData['name'] || 'Anonymous',
-      photoURL: docData['photoURL'] || '',
-      createdAt: docData['createdAt'] ? docData['createdAt'].toDate() : '',
-      lastLogin: docData['lastLoginAt'] ? docData['lastLoginAt'].toDate() : '',
+      createdAt: docData['createdAt'] ? docData['createdAt'].toDate() : undefined,
     };
   }
 }
