@@ -7,5 +7,6 @@ export const environment = {
     storageBucket: import.meta.env.NG_APP_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: import.meta.env.NG_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: import.meta.env.NG_APP_FIREBASE_APP_ID,
+    databaseURL: import.meta.env.NG_APP_FIREBASE_DATABASE_URL,
   },
 };

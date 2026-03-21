@@ -9,4 +9,5 @@ interface ImportMetaEnv {
   readonly NG_APP_FIREBASE_STORAGE_BUCKET: string;
   readonly NG_APP_FIREBASE_MESSAGING_SENDER_ID: string;
   readonly NG_APP_FIREBASE_APP_ID: string;
+  readonly NG_APP_FIREBASE_DATABASE_URL: string;
 }
