@@ -1,10 +1,7 @@
-// src/app/services/rooms.service.ts
 import { Injectable, inject } from '@angular/core';
-import { Firestore, doc, docData, Timestamp } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Room, RoomWithStatus } from '../models/room.model';
-import { UserRoom } from '../models/user-room.model';
+import { Firestore, doc, docData } from '@angular/fire/firestore';
+import { Room } from '@features/rooms/models/room.model';
 
 @Injectable({ providedIn: 'root' })
 export class RoomsService {
@@ -15,31 +12,4 @@ export class RoomsService {
     return docData(roomRef, { idField: 'id' }) as Observable<Room>;
   }
 
-  getRoomWithStatus(userRoom: UserRoom): Observable<RoomWithStatus> {
-    return this.getRoomById(userRoom.roomId).pipe(
-      map((room) => this.enrichWithUserStatus(room, userRoom)),
-    );
-  }
-
-  enrichWithUserStatus(room: Room, userRoom: UserRoom): RoomWithStatus {
-    const hasUnread = this.hasUnreadMessages(
-      room.lastMessage?.timestamp,
-      userRoom.lastReadTimestamp,
-    );
-
-    return {
-      ...room,
-      hasUnread,
-      userRole: userRoom.role,
-      lastReadTimestamp: userRoom.lastReadTimestamp,
-    };
-  }
-
-  private hasUnreadMessages(lastMessageTime?: Timestamp, lastReadTime?: Timestamp): boolean {
-    if (!lastMessageTime || !lastReadTime) {
-      return false;
-    }
-
-    return lastMessageTime.toMillis() > lastReadTime.toMillis();
-  }
 }

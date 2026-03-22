@@ -6,7 +6,8 @@
 - **Path**: `userRooms/{userId}/{roomId}`
 - **Fields**:
   - `roomName`: string
-  - `lastRead`: number (timestamp)
+  - `lastMessage`: string
+  - `unreadCount`: string
   - `isActive`: boolean
 
 ### roomMembers/

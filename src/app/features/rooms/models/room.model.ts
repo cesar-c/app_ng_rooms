@@ -18,9 +18,3 @@ export interface LastMessage {
   senderName: string;
   timestamp: Timestamp;
 }
-
-export interface RoomWithStatus extends Room {
-  hasUnread: boolean;
-  userRole: 'admin' | 'member';
-  lastReadTimestamp: Timestamp;
-}
