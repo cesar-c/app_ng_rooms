@@ -1,14 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { EAppState } from '@core/enums/app-state.enum';
 import { UserProfile } from '@core/models/user.model';
 import { AuthService } from './auth.service';
 import { UsersService } from './users.service';
 import { BehaviorSubject } from 'rxjs';
-
-export interface SessionState {
-  status: EAppState;
-  user: UserProfile | null;
-}
 
 @Injectable({
   providedIn: 'root',
