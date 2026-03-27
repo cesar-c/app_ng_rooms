@@ -1,0 +1,29 @@
+@if (open()) {
+  <section
+    class="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/60 backdrop-blur-sm"
+    (click)="onBackdropClick()"
+  >
+    <article
+      class="mx-4 w-full rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-surface shadow-xl"
+      [ngClass]="sizeClasses[settings().size]"
+      (click)="$event.stopPropagation()"
+      role="dialog"
+      aria-modal="true"
+    >
+      <header class="flex items-center justify-between px-5 py-4">
+        <ng-content select="[modal-header]" />
+        <ngroom-button variant="base" (click)="closeRequest.emit()">
+          <lucide-angular [img]="xIcon" />
+        </ngroom-button>
+      </header>
+
+      <section class="px-5 py-4">
+        <ng-content select="[modal-body]" />
+      </section>
+
+      <footer class="flex items-center justify-end gap-2 px-5 py-4">
+        <ng-content select="[modal-footer]" />
+      </footer>
+    </article>
+  </section>
+}

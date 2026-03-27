@@ -9,6 +9,14 @@
       <lucide-angular [img]="messagesSquareIcon" />
       <span>Crear nueva sala</span>
     </ngroom-button>
+    <ngroom-button
+      variant="tonal"
+      customClasses="justify-start gap-4 "
+      (clicked)="showJoinRoomModalSubject.next()"
+    >
+      <lucide-angular [img]="messageSquarePlusIcon" />
+      <span>Unirse a una sala</span>
+    </ngroom-button>
     <hr class="border-neutral-200 dark:border-neutral-700 my-2" />
 
     @for (item of items(); track item.id) {
@@ -31,3 +39,5 @@
     </div>
   </section>
 </aside>
+
+<ngroom-join-room-modal [open$]="showJoinRoomModal$" />
