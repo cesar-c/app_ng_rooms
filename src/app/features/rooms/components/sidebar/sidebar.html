@@ -19,10 +19,10 @@
     </ngroom-button>
     <hr class="border-neutral-200 dark:border-neutral-700 my-2" />
 
-    @for (item of items(); track item.id) {
+    @for (item of userRooms().rooms; track item.roomId) {
       <a class="btn btn-tonal">
         <div class="flex-1">
-          {{ item.name }}
+          {{ item.roomName }}
         </div>
         <button>*</button>
       </a>
