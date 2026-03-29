@@ -1,12 +1,13 @@
 import { Injectable, inject } from '@angular/core';
-import { Database, onValue, ref } from '@angular/fire/database';
+import { onValue, ref } from 'firebase/database';
 import { AuthService } from '@core/services/auth.service';
+import { FirebaseService } from '@core/services/firebase.service';
 import { Observable, distinctUntilChanged, of, switchMap } from 'rxjs';
 import { UserRoom } from '../models/user-room.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserRoomsService {
-  private database = inject(Database);
+  private database = inject(FirebaseService).rtdb;
   private authService = inject(AuthService);
 
   getActiveUserRooms(): Observable<UserRoom[]> {

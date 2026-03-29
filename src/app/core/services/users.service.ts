@@ -1,15 +1,16 @@
 import { inject, Injectable } from '@angular/core';
-import { User } from '@angular/fire/auth';
-import { doc, DocumentSnapshot, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
+import { User } from 'firebase/auth';
+import { doc, DocumentSnapshot, getDoc, setDoc } from 'firebase/firestore';
 import { UserProfile } from '@core/models/user.model';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  private firestore = inject(Firestore);
+  private firestore = inject(FirebaseService).firestore;
 
   getUserProfile(uid: string): Observable<UserProfile> {
     const userDoc = doc(this.firestore, `users/${uid}`);

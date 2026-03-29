@@ -1,20 +1,29 @@
 import { Injectable, inject } from '@angular/core';
 import {
-  Auth,
-  authState,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithPopup,
   signOut,
   User,
-} from '@angular/fire/auth';
+} from 'firebase/auth';
 import { Observable, filter, from, switchMap, take } from 'rxjs';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private auth = inject(Auth);
-  readonly authState$ = authState(this.auth);
+  private auth = inject(FirebaseService).auth;
+
+  readonly authState$ = new Observable<User | null>((observer) => {
+    const unsubscribe = onAuthStateChanged(
+      this.auth,
+      (user) => observer.next(user),
+      (error) => observer.error(error),
+    );
+
+    return () => unsubscribe();
+  });
 
   signInWithGoogle(): Observable<User | null> {
     const provider = new GoogleAuthProvider();
