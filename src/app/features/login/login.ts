@@ -17,6 +17,7 @@ export default class Login {
 
   signIn() {
     this.authService.signInWithGoogle().subscribe((user) => {
+      console.log('Login successful, user:', user);
       if (user) this.router.navigate(['/room']);
     });
   }

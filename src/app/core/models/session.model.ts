@@ -21,13 +21,6 @@ export class SessionStateModel {
     };
   }
 
-  static createError(): SessionState {
-    return {
-      user: null,
-      state: ESessionState.Error,
-    };
-  }
-
   static createPending(): SessionState {
     return {
       user: null,

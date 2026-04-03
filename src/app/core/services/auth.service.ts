@@ -6,7 +6,7 @@ import {
   signOut,
   User,
 } from 'firebase/auth';
-import { Observable, filter, from, switchMap, take } from 'rxjs';
+import { Observable, combineLatest, from, of, shareReplay, switchMap, take } from 'rxjs';
 import { FirebaseService } from './firebase.service';
 
 @Injectable({
@@ -23,14 +23,15 @@ export class AuthService {
     );
 
     return () => unsubscribe();
-  });
+  }).pipe(shareReplay(1));
 
   signInWithGoogle(): Observable<User | null> {
     const provider = new GoogleAuthProvider();
 
-    return from(signInWithPopup(this.auth, provider)).pipe(
-      switchMap(() => this.authState$),
-      filter((user) => user !== null),
+    const signIn$ = from(signInWithPopup(this.auth, provider));
+
+    return combineLatest([signIn$, this.authState$]).pipe(
+      switchMap(([_, user]) => of(user)),
       take(1),
     );
   }

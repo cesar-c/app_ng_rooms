@@ -1,19 +1,20 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
+import { SessionService } from './session.service';
+import { ESessionState } from '@core/enums/session-states.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoaderService {
-  private showLoader = signal(false);
+  private sessionService = inject(SessionService);
 
-  get isLoading() {
-    return this.showLoader.asReadonly();
-  }
+  private showLoaderState = signal(false);
 
-  show() {
-    this.showLoader.set(true);
-  }
-  hide() {
-    this.showLoader.set(false);
+  showLoader = this.showLoaderState.asReadonly();
+
+  constructor() {
+    this.sessionService.sessionState$.subscribe((sessionState) => {
+      this.showLoaderState.set(sessionState.state === ESessionState.Pending);
+    });
   }
 }

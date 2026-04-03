@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { User } from 'firebase/auth';
-import { doc, DocumentSnapshot, getDoc, serverTimestamp, setDoc, Timestamp } from 'firebase/firestore';
+import { doc, DocumentSnapshot, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { toDate } from '@core/helpers/date.helpers';
 import { UserProfile } from '@core/models/user.model';
 import { from, Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -24,8 +25,9 @@ export class UsersService {
         const isNew = !docSnap.exists();
         const profileUpdate = this.buildProfileUpdate(userData, isNew);
         return from(setDoc(userDoc, profileUpdate, { merge: true })).pipe(
-          switchMap(() => from(getDoc(userDoc))),
-          map((updatedSnap) => this.mapDocToProfile(updatedSnap, userData.uid)),
+          map(() =>
+            isNew ? (profileUpdate as UserProfile) : this.mapDocToProfile(docSnap, userData.uid),
+          ),
         );
       }),
     );
@@ -46,8 +48,7 @@ export class UsersService {
 
   private mapDocToProfile(data: DocumentSnapshot, uid: string): UserProfile {
     const docData = data.data() || {};
-    const createdAt = docData['createdAt'];
-    const createdAtValue = createdAt instanceof Timestamp ? createdAt.toDate() : createdAt instanceof Date ? createdAt : undefined;
+    const createdAtValue = toDate(docData['createdAt']);
     return {
       uid,
       email: docData['email'] || '',

@@ -27,6 +27,12 @@
         <button>*</button>
       </a>
     }
+
+    @if (userRooms().rooms.length === 0) {
+      <p class="text-center text-sm text-neutral-500 mt-4">
+        No tienes salas. Crea o únete a una sala para empezar.
+      </p>
+    }
   </section>
 
   <section class="flex flex-col gap-3 flex-1 px-4 py-2">

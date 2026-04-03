@@ -10,6 +10,7 @@ import { UserRoomsService } from '@features/rooms/service/user-rooms.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { type UserRoomsResult } from './sidebar.type';
 import { EUIState } from '@core/enums/ui-states.enum';
+import { SessionService } from '@core/services/session.service';
 
 @Component({
   selector: 'ngroom-sidebar',
@@ -18,8 +19,9 @@ import { EUIState } from '@core/enums/ui-states.enum';
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
-  private readonly authService = inject(AuthService);
+  private readonly sessionService = inject(SessionService);
   private readonly router = inject(Router);
+  private readonly authService = inject(AuthService);
   readonly userRoomsService = inject(UserRoomsService);
 
   /* ICONS  */
@@ -30,7 +32,7 @@ export class Sidebar {
   readonly showJoinRoomModalSubject = new Subject<void>();
   showJoinRoomModal$ = this.showJoinRoomModalSubject.asObservable();
 
-  readonly user = signal(this.authService.getCurrentUser());
+  readonly user = signal(this.sessionService.sessionState.user);
   private userRooms$: Observable<UserRoomsResult> = this.userRoomsService
     .getActiveUserRooms()
     .pipe(map((rooms) => ({ state: EUIState.Success, rooms })));

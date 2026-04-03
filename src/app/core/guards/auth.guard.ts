@@ -1,15 +1,12 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { map, take, tap } from 'rxjs/operators';
-import { LoaderService } from '@core/services/loader.service';
+import { map, take } from 'rxjs/operators';
 import { AuthService } from '@core/services/auth.service';
 
 export const authGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
-  const loaderService = inject(LoaderService);
   const router = inject(Router);
   console.log('authGuard invoked');
-  loaderService.show();
 
   return authService.authState$.pipe(
     take(1),
@@ -20,6 +17,5 @@ export const authGuard: CanActivateFn = () => {
       router.navigate(['/login']);
       return false;
     }),
-    tap(() => loaderService.hide()),
   );
 };

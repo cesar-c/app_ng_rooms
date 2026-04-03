@@ -4,20 +4,21 @@ import { AuthService } from '@core/services/auth.service';
 import { FirebaseService } from '@core/services/firebase.service';
 import { Observable, distinctUntilChanged, of, switchMap } from 'rxjs';
 import { UserRoom } from '../models/user-room.model';
+import { SessionService } from '@core/services/session.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserRoomsService {
   private database = inject(FirebaseService).rtdb;
-  private authService = inject(AuthService);
+  private sessionService = inject(SessionService);
 
   getActiveUserRooms(): Observable<UserRoom[]> {
-    return this.authService.authState$.pipe(
-      distinctUntilChanged((prev, curr) => prev?.uid === curr?.uid),
-      switchMap((user) => (user?.uid ? this.listenToUserRooms(user.uid) : of([]))),
-    );
+    const currentUser = this.sessionService.sessionState.user;
+    return currentUser ? this.listenToUserRooms(currentUser.uid) : of([]);
   }
 
-  private listenToUserRooms(uid: string): Observable<UserRoom[]> {
+  private listenToUserRooms(
+    uid: string = this.sessionService.sessionState.user?.uid ?? '',
+  ): Observable<UserRoom[]> {
     const userRoomsRef = ref(this.database, `userRooms/${uid}`);
 
     return new Observable<UserRoom[]>((observer) => {
