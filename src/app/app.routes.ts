@@ -6,6 +6,16 @@ export const routes: Routes = [
   {
     path: 'room',
     loadComponent: () => import('./features/rooms/rooms'),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./features/rooms/components/room-empty/room-empty'),
+      },
+      {
+        path: ':roomId',
+        loadComponent: () => import('./features/rooms/components/chat-panel/chat-panel'),
+      },
+    ],
     canActivate: [authGuard],
   },
   {

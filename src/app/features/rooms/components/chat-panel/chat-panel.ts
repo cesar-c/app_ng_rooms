@@ -9,7 +9,7 @@ import { LucideAngularModule, Menu, SmilePlus } from 'lucide-angular';
   templateUrl: './chat-panel.html',
   styleUrl: './chat-panel.css',
 })
-export class ChatPanel {
+export default class ChatPanel {
   menuIcon = Menu;
   smilePlusIcon = SmilePlus;
   messages = [

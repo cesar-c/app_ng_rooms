@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LucideAngularModule, LogOut, MessagesSquare, MessageSquarePlus } from 'lucide-angular';
 import { NgRoomButton } from '@components/atoms/button/button';
 import { AuthService } from '@core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { JoinRoomModal } from '../join-room-modal/join-room-modal';
 import { map, Observable, Subject } from 'rxjs';
 import { UserRoomsService } from '@features/rooms/service/user-rooms.service';
@@ -14,7 +14,7 @@ import { SessionService } from '@core/services/session.service';
 
 @Component({
   selector: 'ngroom-sidebar',
-  imports: [CommonModule, LucideAngularModule, NgRoomButton, JoinRoomModal],
+  imports: [CommonModule, RouterLink, LucideAngularModule, NgRoomButton, JoinRoomModal],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })

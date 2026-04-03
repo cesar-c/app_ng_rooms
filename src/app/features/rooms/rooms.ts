@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { Sidebar } from './components/sidebar/sidebar';
-import { ChatPanel } from './components/chat-panel/chat-panel';
 
 @Component({
   selector: 'ngroom-rooms',
-  imports: [CommonModule, LucideAngularModule, ChatPanel, Sidebar],
+  imports: [CommonModule, RouterOutlet, LucideAngularModule, Sidebar],
   templateUrl: './rooms.html',
   styleUrl: './rooms.css',
 })
