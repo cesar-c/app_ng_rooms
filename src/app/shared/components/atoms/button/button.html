@@ -1,6 +1,7 @@
 <button
   type="button"
   class="text-center border transition-colors font-semibold"
+  [disabled]="disabled"
   [ngClass]="classes()"
   (click)="clicked.emit()"
 >
