@@ -15,7 +15,6 @@
 - **Document ID**: `{roomId}`
 - **Fields**:
   - `name`: string
-  - `description`: string (optional)
   - `adminId`: string
   - `createdAt`: Timestamp
   - `updatedAt`: Timestamp

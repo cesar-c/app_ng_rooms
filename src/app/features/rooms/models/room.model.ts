@@ -1,9 +1,8 @@
 import { Timestamp } from 'firebase/firestore';
 
 export interface Room {
-  id: string;
+  id?: string;
   name: string;
-  description?: string;
   adminId: string;
   createdAt: Timestamp;
   updatedAt: Timestamp;
@@ -17,4 +16,17 @@ export interface LastMessage {
   senderId: string;
   senderName: string;
   timestamp: Timestamp;
+}
+
+export class RoomModel {
+  static createNewRoom(name: string, adminId: string): Room {
+    return {
+      name: name,
+      adminId: adminId,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now(),
+      memberIds: [adminId],
+      memberCount: 1,
+    };
+  }
 }
