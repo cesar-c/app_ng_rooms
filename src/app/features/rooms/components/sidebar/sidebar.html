@@ -5,7 +5,11 @@
     Ng Rooms
   </h1>
   <section class="flex-7 px-1 custom-scrollbar">
-    <ngroom-button variant="tonal" customClasses="justify-start gap-4 ">
+    <ngroom-button
+      variant="tonal"
+      customClasses="justify-start gap-4 "
+      (clicked)="showCreateRoomModalSubject.next()"
+    >
       <lucide-angular [img]="messagesSquareIcon" />
       <span>Crear nueva sala</span>
     </ngroom-button>
@@ -47,3 +51,4 @@
 </aside>
 
 <ngroom-join-room-modal [open$]="showJoinRoomModal$" />
+<ngroom-create-room-modal [open$]="showCreateRoomModal$" />

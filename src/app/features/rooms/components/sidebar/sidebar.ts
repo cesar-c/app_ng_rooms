@@ -11,10 +11,18 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { type UserRoomsResult } from './sidebar.type';
 import { EUIState } from '@core/enums/ui-states.enum';
 import { SessionService } from '@core/services/session.service';
+import { CreateRoomModal } from '../create-room-modal/create-room-modal';
 
 @Component({
   selector: 'ngroom-sidebar',
-  imports: [CommonModule, RouterLink, LucideAngularModule, NgRoomButton, JoinRoomModal],
+  imports: [
+    CommonModule,
+    RouterLink,
+    LucideAngularModule,
+    NgRoomButton,
+    JoinRoomModal,
+    CreateRoomModal,
+  ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
@@ -31,6 +39,9 @@ export class Sidebar {
 
   readonly showJoinRoomModalSubject = new Subject<void>();
   showJoinRoomModal$ = this.showJoinRoomModalSubject.asObservable();
+
+  readonly showCreateRoomModalSubject = new Subject<void>();
+  showCreateRoomModal$ = this.showCreateRoomModalSubject.asObservable();
 
   readonly user = signal(this.sessionService.sessionState.user);
   private userRooms$: Observable<UserRoomsResult> = this.userRoomsService
