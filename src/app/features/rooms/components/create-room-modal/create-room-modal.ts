@@ -1,7 +1,5 @@
-import { Component, computed, DestroyRef, inject, Input, OnInit, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, computed, inject, model } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs/internal/Observable';
 import { LucideAngularModule, PencilLine } from 'lucide-angular';
 
 import { NgRoomButton } from '@components/atoms/button/button';
@@ -16,10 +14,9 @@ import { CreateRoomModalPresenter } from './create-room-modal.presenter';
   templateUrl: './create-room-modal.html',
   styleUrl: './create-room-modal.css',
 })
-export class CreateRoomModal implements OnInit {
-  private destroyRef = inject(DestroyRef);
+export class CreateRoomModal {
   readonly presenter = inject(CreateRoomModalPresenter);
-  showModal = signal(false);
+  isOpen = model(false);
 
   disableButton = computed(() => this.presenter.isLoading() || this.presenter.isNameInvalid());
   primaryActionLabel = computed(() => (this.presenter.isLoading() ? 'Creando...' : 'Crear'));
@@ -30,13 +27,7 @@ export class CreateRoomModal implements OnInit {
     size: 'sm',
   };
 
-  @Input({ required: true }) open$!: Observable<void>;
-
-  ngOnInit(): void {
-    this.open$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.showModal.set(true));
-  }
-
   closeModal() {
-    this.showModal.set(false);
+    this.isOpen.set(false);
   }
 }

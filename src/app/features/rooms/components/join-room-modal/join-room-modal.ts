@@ -1,10 +1,9 @@
-import { Component, DestroyRef, Input, OnInit, inject, signal } from '@angular/core';
+import { Component, model } from '@angular/core';
+import { LucideAngularModule, AtSign } from 'lucide-angular';
+
 import { NgRoomModal } from '@components/molecules/modal/modal';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Observable } from 'rxjs';
 import { ModalConfig } from '@components/molecules/modal/modal.type';
 import { NgRoomButton } from '@components/atoms/button/button';
-import { LucideAngularModule, AtSign } from 'lucide-angular';
 
 @Component({
   selector: 'ngroom-join-room-modal',
@@ -12,22 +11,15 @@ import { LucideAngularModule, AtSign } from 'lucide-angular';
   templateUrl: './join-room-modal.html',
   styleUrl: './join-room-modal.css',
 })
-export class JoinRoomModal implements OnInit {
-  private destroyRef = inject(DestroyRef);
-  showModal = signal(false);
+export class JoinRoomModal {
+  isOpen = model(false);
   atSignIcon = AtSign;
 
   modalConfig: Partial<ModalConfig> = {
     size: 'sm',
   };
 
-  @Input({ required: true }) open$!: Observable<void>;
-
-  ngOnInit(): void {
-    this.open$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.showModal.set(true));
-  }
-
   closeModal() {
-    this.showModal.set(false);
+    this.isOpen.set(false);
   }
 }

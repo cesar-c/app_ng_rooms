@@ -6,6 +6,7 @@ export interface Room {
   adminId: string;
   createdAt: Timestamp;
   updatedAt: Timestamp;
+  deletedAt?: Timestamp;
   memberIds: string[];
   memberCount: number;
   lastMessage?: LastMessage;

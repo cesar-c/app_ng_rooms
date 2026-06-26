@@ -8,7 +8,7 @@
     <ngroom-button
       variant="tonal"
       customClasses="justify-start gap-4 "
-      (clicked)="showCreateRoomModalSubject.next()"
+      (clicked)="isCreateModalOpen.set(true)"
     >
       <lucide-angular [img]="messagesSquareIcon" />
       <span>Crear nueva sala</span>
@@ -16,7 +16,7 @@
     <ngroom-button
       variant="tonal"
       customClasses="justify-start gap-4 "
-      (clicked)="showJoinRoomModalSubject.next()"
+      (clicked)="isJoinModalOpen.set(true)"
     >
       <lucide-angular [img]="messageSquarePlusIcon" />
       <span>Unirse a una sala</span>
@@ -50,5 +50,5 @@
   </section>
 </aside>
 
-<ngroom-join-room-modal [open$]="showJoinRoomModal$" />
-<ngroom-create-room-modal [open$]="showCreateRoomModal$" />
+<ngroom-join-room-modal [(isOpen)]="isJoinModalOpen" />
+<ngroom-create-room-modal [(isOpen)]="isCreateModalOpen" />

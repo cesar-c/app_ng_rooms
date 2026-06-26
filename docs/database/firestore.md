@@ -18,6 +18,7 @@
   - `adminId`: string
   - `createdAt`: Timestamp
   - `updatedAt`: Timestamp
+  - `deletedAt`: Timestamp
   - `memberIds`: string[]
   - `lastMessage`: LastMessage (optional)
 

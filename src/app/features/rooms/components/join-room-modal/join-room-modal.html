@@ -1,10 +1,10 @@
-<ngroom-modal [open]="showModal()" (closeRequest)="closeModal()" [config]="modalConfig">
+<ngroom-modal [open]="isOpen()" (closeRequest)="closeModal()" [config]="modalConfig">
   <article modal-header>
     <h2 class="text-lg font-semibold">Unirse a una sala</h2>
   </article>
   <ng-content modal-body>
-    <section class="flex self-center gap-2 p-2.5 bg-neutral-100 dark:bg-neutral-800 rounded-2xl">
-      <lucide-angular [img]="atSignIcon" />
+    <section class="flex justify-center items-center gap-2 p-2.5 bg-neutral-100 dark:bg-neutral-800 rounded-2xl">
+      <lucide-angular [img]="atSignIcon" class="h-5 w-5" />
       <input class="flex-1 focus:outline-none" type="text" placeholder="Ingrese ID de la sala" />
     </section>
   </ng-content>

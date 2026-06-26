@@ -37,11 +37,8 @@ export class Sidebar {
   messagesSquareIcon = MessagesSquare;
   messageSquarePlusIcon = MessageSquarePlus;
 
-  readonly showJoinRoomModalSubject = new Subject<void>();
-  showJoinRoomModal$ = this.showJoinRoomModalSubject.asObservable();
-
-  readonly showCreateRoomModalSubject = new Subject<void>();
-  showCreateRoomModal$ = this.showCreateRoomModalSubject.asObservable();
+  readonly isJoinModalOpen = signal(false);
+  readonly isCreateModalOpen = signal(false);
 
   readonly user = signal(this.sessionService.sessionState.user);
   private userRooms$: Observable<UserRoomsResult> = this.userRoomsService
